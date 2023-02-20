@@ -4,10 +4,13 @@ const {Musician} = require("./Musician")
 const {sequelize} = require("./db")
 
 const port = 3000;
-
+app.get("/musicians", async (req, res) => {
+    const musicians = await Musician.findAll();
+    res.json(musicians);
+})
 //TODO
 
 app.listen(port, () => {
     sequelize.sync();
-    console.log(`Listening on port ${port}`)
+    console.log("Listening on port http://localhost:" + port + "/musicians")
 })
