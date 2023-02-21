@@ -9,8 +9,17 @@ app.get("/musicians", async (req, res) => {
     res.json(musicians);
 })
 //TODO
+app.get("/musicians/:id", async (req, res) => {
+    const musician = await Musician.findByPk(req.params.id);
+    res.json(musician);
+})
+
+// app.listen(port, () => {
+//     sequelize.sync();
+//     console.log("Listening on port http://localhost:" + port + "/musicians")
+// })
 
 app.listen(port, () => {
     sequelize.sync();
-    console.log("Listening on port http://localhost:" + port + "/musicians")
+    console.log("Listening on port  http://localhost:3000/musicians/1")
 })
